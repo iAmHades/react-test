@@ -22,8 +22,7 @@ module.exports = {
     },
 
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.js$/i,
                 exclude: /node_modules/,
                 use: {
@@ -33,5 +32,13 @@ module.exports = {
             amwWebpack.createSvgRule()
         ]
 
+    },
+    externals: {
+        'jsdom': 'window',
+        'cheerio': 'window',
+        'react/lib/ExecutionEnvironment': true,
+        'react/addons': true,
+        'react/lib/ReactContext': 'window',
+        'sinon': 'window.sinon'
     }
 }
