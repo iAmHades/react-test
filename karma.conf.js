@@ -21,20 +21,16 @@ module.exports = function(config) {
 		browsers: ["Chrome", "PhantomJS"],
 		preprocessors: {
 			// "src/*.js": ["coverage", "webpack"],
-			"test/*.js": ["webpack"]
+			"test/*.js": ["webpack", "coverage"]
 		},
 		reporters: ["spec", "coverage"],
 		coverageReporter: {
 			dir: "coverage",
 			reporters: [{
-				type: "json",
-				subdir: ".",
-				file: "coverage.json"
+				type: "text-summary",
 			}, {
-				type: "lcov",
-				subdir: "."
-			}, {
-				type: "text-summary"
+				type: 'text',
+				file: 'coverage.txt'
 			}]
 		},
 		webpack: webpackConfig,
