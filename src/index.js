@@ -17,9 +17,9 @@ class Index extends Component {
 		};
 	}
 
-	refresh() {
-        this.state.data = ["1", "2", ""]
-    }
+	// refresh() {
+ //        this.state.data = ["1", "2", ""]
+ //    }
 
 	render() {
 		const hProp = this.state.initialHeight

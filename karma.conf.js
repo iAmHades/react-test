@@ -12,8 +12,7 @@ module.exports = function(config) {
 			"karma-mocha",
 			"karma-phantomjs-launcher",
 			"karma-chrome-launcher",
-			"karma-coverage",
-			"karma-spec-reporter"
+			"karma-coverage-istanbul-reporter",
 		],
 		resolve: {
 			extensions: ['.json', '.js']
@@ -21,19 +20,49 @@ module.exports = function(config) {
 		browsers: ["Chrome", "PhantomJS"],
 		preprocessors: {
 			// "src/*.js": ["coverage", "webpack"],
-			"test/*.js": ["webpack", "coverage"]
+			"test/*.js": ["webpack", "babel"]
 		},
-		reporters: ["spec", "coverage"],
-		coverageReporter: {
-			dir: "coverage",
-			reporters: [{
-				type: "text-summary",
-			}, {
-				type: 'text',
-				file: 'coverage.txt'
-			}]
+		reporters: ["coverage-istanbul"],
+		coverageIstanbulReporter: {
+			reports: ['text-summary'],
+			fixWebpackSourcePaths: true
 		},
-		webpack: webpackConfig,
+		webpack: {
+			module: {
+				rules: [{
+					test: /\.js$/i,
+					exclude: /node_modules/,
+					use: {
+						loader: 'babel-loader'
+					}
+				}, {
+					test: /\.js$/,
+					use: {
+						loader: 'istanbul-instrumenter-loader',
+						options: { esModules: true }
+					},
+					include: path.resolve('src/')
+				}, {
+					test: /\.svg$/,
+					loaders: [
+						'babel-loader', {
+							loader: 'react-svg-loader',
+							query: {
+								jsx: true
+							}
+						}
+					]
+				}]
+			},
+			externals: {
+				'jsdom': 'window',
+				'cheerio': 'window',
+				'react/lib/ExecutionEnvironment': true,
+				'react/addons': true,
+				'react/lib/ReactContext': 'window',
+				'sinon': 'window.sinon'
+			}
+		},
 		webpackMiddleware: {
 			noInfo: true
 		},
