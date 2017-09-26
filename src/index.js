@@ -1,3 +1,4 @@
+import "./style.scss"
 import React, { Component, PropTypes } from "react";
 import {
 	WingBlank,

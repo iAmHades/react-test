@@ -10,7 +10,7 @@ import {
 import {
   SearchBar
 } from "antd-mobile-web";
-// import Index from '../src/index'
+import Index from '../src/index'
 import Basic from '../src/basic'
 
 describe('<Index />', () => {

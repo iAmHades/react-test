@@ -21,8 +21,13 @@ module.exports = function(config) {
 		// browsers: ["Chrome", "PhantomJS"],
 		browsers: ["PhantomJS"],
 		preprocessors: {
-			// "src/*.js": ["webpack", "babel"],
 			"test/*.js": ["webpack", "babel"]
+		},
+		scssPreprocessor: {
+			options: {
+				sourceMap: true,
+				includePaths: ['bower_components']
+			}
 		},
 		reporters: ["coverage-istanbul", "mocha"],
 		coverageIstanbulReporter: {
@@ -73,7 +78,13 @@ module.exports = function(config) {
 				}, {
 					test: /\.json$/,
 					loader: "json-loader"
-				}]
+				},
+				 {
+					test: /\.scss$/,
+					loader: 'style-loader!css-loader!sass-loader',
+					// include: path.resolve('src/')
+				}
+				]
 			},
 			externals: {
 				'jsdom': 'window',
