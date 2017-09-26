@@ -18,6 +18,7 @@ describe('<Index />', () => {
   it('Hello PAJK', () => {
     const wrapperBasic = shallow(<Basic />)
     expect(wrapperBasic.text()).to.equal('welcome to here!')
+    expect(wrapperBasic.text()).to.equal('welcome to here!!')
     // const wrapper = mount(< Index /> )
     // expect(wrapper.find('form.am-search').length).to.equal(1)
     // expect(wrapper.find('form.am-search').exists()).to.equal(true);

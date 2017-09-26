@@ -11,21 +11,37 @@ module.exports = function(config) {
 			"karma-webpack",
 			"karma-mocha",
 			"karma-phantomjs-launcher",
-			"karma-chrome-launcher",
+			// "karma-chrome-launcher",
 			"karma-coverage-istanbul-reporter",
+			"karma-mocha-reporter"
 		],
 		resolve: {
 			extensions: ['.json', '.js']
 		},
-		browsers: ["Chrome", "PhantomJS"],
+		// browsers: ["Chrome", "PhantomJS"],
+		browsers: ["PhantomJS"],
 		preprocessors: {
 			// "src/*.js": ["webpack", "babel"],
 			"test/*.js": ["webpack", "babel"]
 		},
-		reporters: ["coverage-istanbul"],
+		reporters: ["coverage-istanbul", "mocha"],
 		coverageIstanbulReporter: {
 			reports: ['text-summary'],
 			fixWebpackSourcePaths: true
+		},
+		mochaReporter: {
+			colors: {
+				success: 'blue',
+				info: 'bgGreen',
+				warning: 'cyan',
+				error: 'bgRed'
+			},
+			symbols: {
+				success: '+',
+				info: '#',
+				warning: '!',
+				error: 'x'
+			}
 		},
 		webpack: {
 			module: {
