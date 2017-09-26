@@ -5,17 +5,21 @@ import {
   expect
 } from 'chai';
 import {
-  shallow
+  shallow,
+  mount
 } from 'enzyme';
-import Index from '../src/index'
 import {
   SearchBar
 } from "antd-mobile-web";
+// import Index from '../src/index'
+import Basic from '../src/basic'
 
 describe('<Index />', () => {
   it('Hello PAJK', () => {
-    const wrapper = shallow(< Index /> )
-    expect(wrapper.find(SearchBar).render().find('form.am-search').exists()).to.equal(false)
+    const wrapperBasic = shallow(<Basic />)
+    expect(wrapperBasic.text()).to.equal('welcome to here!')
+    // const wrapper = mount(< Index /> )
+    // expect(wrapper.find('form.am-search').length).to.equal(1)
     // expect(wrapper.find('form.am-search').exists()).to.equal(true);
   })
 })

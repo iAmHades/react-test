@@ -1,20 +1,15 @@
 import React, { Component, PropTypes } from "react";
 
-class Index extends Component {
+class Basic extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			data: ["", "", ""],
-			initialHeight: 200,
-			shops: [0, 1, 2, 3]
-		};
 	}
 
 	render() {
 		return (
-			 <div>welcome to here!</div>
+			 <div><b>welcome to here!</b></div>
 		);
 	}
 }
 
-export default Index;
+export default Basic;
