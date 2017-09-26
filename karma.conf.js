@@ -19,7 +19,7 @@ module.exports = function(config) {
 		},
 		browsers: ["Chrome", "PhantomJS"],
 		preprocessors: {
-			// "src/*.js": ["coverage", "webpack"],
+			// "src/*.js": ["webpack", "babel"],
 			"test/*.js": ["webpack", "babel"]
 		},
 		reporters: ["coverage-istanbul"],
@@ -39,7 +39,9 @@ module.exports = function(config) {
 					test: /\.js$/,
 					use: {
 						loader: 'istanbul-instrumenter-loader',
-						options: { esModules: true }
+						options: {
+							esModules: true
+						}
 					},
 					include: path.resolve('src/')
 				}, {
@@ -52,11 +54,13 @@ module.exports = function(config) {
 							}
 						}
 					]
+				}, {
+					test: /\.json$/,
+					loader: "json-loader"
 				}]
 			},
 			externals: {
 				'jsdom': 'window',
-				'cheerio': 'window',
 				'react/lib/ExecutionEnvironment': true,
 				'react/addons': true,
 				'react/lib/ReactContext': 'window',
