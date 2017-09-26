@@ -11,23 +11,17 @@
         "analyzer": "webpack --profile --json > dist/stats.json && webpack-bundle-analyzer dist/stats.json -m static -O -r dist/report.html"
     },
     "devDependencies": {
-        "antd-mobile": "1.x",
-        "antd-mobile-web": "^1.5.0",
         "babel-core": "^6.25.0",
         "babel-loader": "^7.1.1",
         "babel-preset-env": "^1.6.0",
         "chai": "^4.1.2",
         "enzyme": "^2.9.1",
         "json-loader": "^0.5.7",
-        "react": "^15.6.1",
         "react-addons-test-utils": "^15.6.0",
-        "react-dom": "^15.6.1",
         "react-test-renderer": "^15.6.1",
         "webpack": "^3.3.0",
         "webpack-bundle-analyzer": "^2.8.3",
-        "webpack-dev-server": "^2.5.1"
-    },
-    "dependencies": {
+        "webpack-dev-server": "^2.5.1",
         "istanbul-instrumenter-loader": "^3.0.0",
         "karma": "^1.7.1",
         "karma-babel-preprocessor": "^7.0.0",
@@ -39,7 +33,12 @@
         "karma-webpack": "^2.0.4",
         "mocha": "^3.5.3",
         "phantomjs-prebuilt": "^2.1.15",
-        "react-svg-loader": "^1.1.1",
-        "should": "^13.1.0"
+        "react-svg-loader": "^1.1.1"
+    },
+    "dependencies": {
+        "react": "^15.6.1",
+        "react-dom": "^15.6.1",
+        "antd-mobile": "1.x",
+        "antd-mobile-web": "^1.5.0"
     }
 }
