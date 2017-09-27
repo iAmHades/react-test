@@ -29,6 +29,14 @@ module.exports = function(config) {
 				includePaths: ['bower_components']
 			}
 		},
+		babelPreprocessor: {
+			options: {
+				// presets: ['es2015','react','stage-0'],
+				// sourceMap: 'inline',
+				// input sizes of >500KB
+				compact:true
+			}
+		},
 		reporters: ["coverage-istanbul", "mocha"],
 		coverageIstanbulReporter: {
 			reports: ['text-summary','html'],
@@ -78,7 +86,6 @@ module.exports = function(config) {
 				}, {
 					test: /\.scss$/,
 					loader: 'style-loader!css-loader!sass-loader',
-					exclude:'/images/'
 					// include: path.resolve('src/')
 				}, 
 				{
