@@ -16,7 +16,7 @@ module.exports = function(config) {
 			"karma-mocha-reporter"
 		],
 		resolve: {
-			extensions: ['.json', '.js']
+			extensions: ['.json', '.js','.png']
 		},
 		// browsers: ["Chrome", "PhantomJS"],
 		browsers: ["PhantomJS"],
@@ -31,7 +31,7 @@ module.exports = function(config) {
 		},
 		reporters: ["coverage-istanbul", "mocha"],
 		coverageIstanbulReporter: {
-			reports: ['text-summary'],
+			reports: ['text-summary','html'],
 			fixWebpackSourcePaths: true
 		},
 		mochaReporter: {
@@ -53,18 +53,15 @@ module.exports = function(config) {
 				rules: [{
 					test: /\.js$/i,
 					exclude: /node_modules/,
-					use: {
+					use: [{
 						loader: 'babel-loader'
-					}
-				}, {
-					test: /\.js$/,
-					use: {
+					},{
 						loader: 'istanbul-instrumenter-loader',
 						options: {
 							esModules: true
 						}
-					},
-					include: path.resolve('src/')
+					}]
+
 				}, {
 					test: /\.svg$/,
 					loaders: [
@@ -78,11 +75,15 @@ module.exports = function(config) {
 				}, {
 					test: /\.json$/,
 					loader: "json-loader"
-				},
-				 {
+				}, {
 					test: /\.scss$/,
 					loader: 'style-loader!css-loader!sass-loader',
+					exclude:'/images/'
 					// include: path.resolve('src/')
+				}, 
+				{
+					test: /\.(png|jpg|gif|woff|woff2|eot|ttf)$/,
+					loader: 'url-loader?limit=8192&name=images/[name]-[hash:8].[ext]'
 				}
 				]
 			},
