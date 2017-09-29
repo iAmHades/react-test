@@ -1,4 +1,4 @@
-import "./style.scss"
+import "./style.scss";
 import React, { Component, PropTypes } from "react";
 import {
 	WingBlank,
@@ -7,6 +7,7 @@ import {
 	Carousel,
 	Card
 } from "antd-mobile-web";
+import cls from './cls'
 
 class Index extends Component {
 	constructor(props) {
@@ -16,11 +17,12 @@ class Index extends Component {
 			initialHeight: 200,
 			shops: [0, 1, 2, 3]
 		};
+		var c = new cls() 
 	}
 
 	// refresh() {
- //        this.state.data = ["1", "2", ""]
- //    }
+	//        this.state.data = ["1", "2", ""]
+	//    }
 
 	render() {
 		const hProp = this.state.initialHeight

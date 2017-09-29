@@ -29,15 +29,16 @@ module.exports = {
                     loader: 'babel-loader'
                 }
             },
-            amwWebpack.createSvgRule()
+            amwWebpack.createSvgRule(), {
+                test: /\.scss$/,
+                loader: 'style-loader!css-loader!sass-loader',
+                // include: path.resolve('src/')
+            }, {
+                test: /\.(png|jpg|gif|woff|woff2|eot|ttf)$/,
+                loader: 'url-loader?limit=8192&name=images/[name]-[hash:8].[ext]'
+            }
         ]
 
-    },
-    externals: {
-        'jsdom': 'window',
-        'react/lib/ExecutionEnvironment': true,
-        'react/addons': true,
-        'react/lib/ReactContext': 'window',
-        'sinon': 'window.sinon'
     }
+   
 }
