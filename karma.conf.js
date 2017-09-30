@@ -9,7 +9,19 @@ webpackConfig.externals = {
 	"react/addons": true,
 	"react/lib/ReactContext": "window",
 	"sinon": "window.sinon"
-};
+}
+
+webpackConfig.module.rules.push({
+	test: /\.js$|\.jsx$/,
+	use: {
+		loader: 'istanbul-instrumenter-loader',
+		options: {
+			esModules: true
+		}
+	},
+	enforce: 'post',
+	exclude: /node_modules|\.spec\.js$/,
+})
 
 module.exports = function(config) {
 	config.set({
